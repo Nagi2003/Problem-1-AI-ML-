@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipment Delay Prediction</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Shipment Delay Prediction</h2>
+        <form method="POST" action="/predict">
+            <div class="form-group">
+                <label for="origin">Origin:</label>
+                <select class="form-control" id="origin" name="origin">
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Pune">Pune</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination:</label>
+                <select class="form-control" id="destination" name="destination">
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="vehicle_type">Vehicle Type:</label>
+                <select class="form-control" id="vehicle_type" name="vehicle_type">
+                    <option value="Trailer">Trailer</option>
+                    <option value="Truck">Truck</option>
+                    <option value="Container">Container</option>
+                    <option value="Lorry">Lorry</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="distance">Distance (km):</label>
+                <input type="number" class="form-control" id="distance" name="distance" required>
+            </div>
+            <div class="form-group">
+                <label for="weather_conditions">Weather Conditions:</label>
+                <select class="form-control" id="weather_conditions" name="weather_conditions">
+                    <option value="Rain">Rain</option>
+                    <option value="Storm">Storm</option>
+                    <option value="Clear">Clear</option>
+                    <option value="Fog">Fog</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="traffic_conditions">Traffic Conditions:</label>
+                <select class="form-control" id="traffic_conditions" name="traffic_conditions">
+                    <option value="Light">Light</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="Heavy">Heavy</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+
+        <hr>
+
+        {% if result %}
+            <h3>Prediction Result: <span class="badge badge-info">{{ result }}</span></h3>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
